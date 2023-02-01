@@ -14,10 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
+Route::get('/', [EmployeeController::class, 'index'])->name('pegawai');
 Route::get('/pegawai', [EmployeeController::class, 'index'])->name('pegawai');
 Route::get('/tambahDataPegawai', [EmployeeController::class, 'tambahDataPegawai'])->name('tambahDataPegawai');
 Route::post('/prosesTambahDataPegawai', [EmployeeController::class, 'prosesTambahDataPegawai'])->name('prosesTambahDataPegawai');

@@ -27,6 +27,14 @@
                           <label for="number" class="form-label">No Telpon</label>
                           <input type="number" name="no_telpon" class="form-control" id="number" value="{{ $data->no_telpon }}">
                         </div>
+
+                        <div class="mb-3">
+                          <label for="number" class="form-label">Masukan Foto</label>
+                          <input type="file" name="foto" class="form-control" id="number">
+                        </div>
+                        <div class="mb-3">
+                          <img src="{{ asset('fotopegawai/'.$data->foto) }}" alt="" style="width: 100px;">
+                        </div>
                        
                         <button type="submit" class="btn btn-primary">Tambah</button>
                       </form>

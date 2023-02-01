@@ -18,7 +18,13 @@ class EmployeeController extends Controller
 
     public function prosesTambahDataPegawai(Request $request){
         // dd($request->all());
-       Employee::create($request->all());
+
+       $data = Employee::create($request->all());
+       if($request->hasFile('foto')){
+        $request->file('foto')->move('fotopegawai/', $request->file('foto')->getClientOriginalName());
+        $data->foto = $request->file('foto')->getClientOriginalName();
+        $data->save();
+       }
         return redirect()->route('pegawai');
 
     }
@@ -31,7 +37,18 @@ class EmployeeController extends Controller
 
     public function prosesEditDataPegawai(Request $request, $id){
         $data = Employee::find($id);
-        $data->update($request->all());
+        $data->nama = $request->input('nama');
+        $data->jenis_kelamin = $request->input('jenis_kelamin');
+        $data->no_telpon = $request->input('no_telpon');
+        if($request->hasFile('foto')){
+            $file = $request->file('foto');
+            $extension = $file->getClientOriginalName();
+            $filename = time().'.'.$extension;
+            $file->move('fotopegawai/', $filename);
+            $data->foto = $filename;
+
+        }
+        $data->save();
         return redirect()->route('pegawai');
     }
 

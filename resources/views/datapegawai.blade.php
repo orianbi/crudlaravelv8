@@ -12,6 +12,7 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nama Lengkap</th>
+                    <th scope="col">Gambar</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">No Telpon</th>
                     <th scope="col">Aksi</th>
@@ -25,6 +26,10 @@
                 <tr>
                     <td>{{ $no ++ }}</td>
                     <td>{{ $d->nama }}</td>
+                    <td>
+                        <img src="{{ asset('fotopegawai/'.$d->foto) }}" alt="" style="width: 100px;">
+
+                    </td>
                     <td>{{ $d->jenis_kelamin }}</td>
                     <td>{{ $d->no_telpon }}</td>
                     <td>
